@@ -25,6 +25,7 @@ import { ref, watch } from "vue";
 import Note from "@/components/Notes/Note.vue";
 import AddEditNote from "@/components/Notes/AddEditNote.vue";
 import { useStoreNotes } from "../stores/StoreNotes";
+import { useWatchCharacters } from "../use/useWatchCharacters";
 
 const newNote = ref("");
 const addEditNoteRef = ref(null);
@@ -36,11 +37,7 @@ const addNote = () => {
   addEditNoteRef.value.focusTextarea();
 };
 
-watch(newNote, (newValue) => {
-  if (newValue.length === 100) {
-    alert("only 100 characters allowed!");
-  }
-});
+useWatchCharacters(newNote);
 
 // const deletedNote = (idToDelete) => {
 //   notes.value = notes.value.filter((note) => {
