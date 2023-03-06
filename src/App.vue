@@ -1,5 +1,14 @@
 <script setup>
+import { onMounted } from "vue";
 import NavBar from "@/components/Layouts/NavBar.vue";
+import { useStoreNotes } from "@/stores/StoreNotes";
+
+const storeNotes = useStoreNotes();
+
+// mounted
+onMounted(() => {
+  storeNotes.getNotes();
+});
 </script>
 
 <template>
